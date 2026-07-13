@@ -1,7 +1,7 @@
 package model
 
 import(
-	errs "userSer/pkg/errors"
+	errs "github.com/temurova-ui/cinema/pkg/errors"
 )
 
 type UserId int64

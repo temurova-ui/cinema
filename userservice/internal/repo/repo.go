@@ -4,8 +4,8 @@ import (
 	"context"
 	"database/sql"
 	"errors"
-	"userSer/internal/model"
-	errs "userSer/pkg/errors"
+	"github.com/temurova-ui/cinema/internal/model"
+	errs "github.com/temurova-ui/cinema/pkg/errors"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 )

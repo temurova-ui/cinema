@@ -3,10 +3,10 @@ package service
 import (
 	"context"
 	"fmt"
-	"userSer/internal/model"
-	"userSer/internal/repo"
-	"userSer/pkg/errors"
-	"userSer/pkg/password"
+	"github.com/temurova-ui/cinema/internal/model"
+	"github.com/temurova-ui/cinema/internal/repo"
+	"github.com/temurova-ui/cinema/pkg/errors"
+	"github.com/temurova-ui/cinema/pkg/password"
 
 )
 
