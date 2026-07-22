@@ -3,10 +3,10 @@ package service
 import (
 	"context"
 	"fmt"
-	"github.com/temurova-ui/cinema/internal/model"
-	"github.com/temurova-ui/cinema/internal/repo"
-	"github.com/temurova-ui/cinema/pkg/errors"
-	"github.com/temurova-ui/cinema/pkg/password"
+	"github.com/temurova-ui/cinema/userservice/internal/model"
+	"github.com/temurova-ui/cinema/userservice/internal/repo"
+	"github.com/temurova-ui/cinema/userservice/pkg/errors"
+	"github.com/temurova-ui/cinema/userservice/pkg/password"
 
 )
 

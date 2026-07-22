@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package movie;
+
+option go_package = "github.com/temurova-ui/cinema/movieservice/movie;movie";
+
+service MovieService {
+    rpc Create(CreateMovieRequest) returns (CreateMovieResponse);
+    rpc GetByID(GetMovieRequest) returns (GetMovieResponse);
+    rpc List(ListMovieRequest) returns (ListMovieResponse);
+    rpc Update(UpdateMovieRequest) returns (UpdateMovieResponse);
+    rpc Delete(DeleteMovieRequest) returns (DeleteMovieResponse);
+}
+
+message CreateMovieRequest {
+    int64 id = 1;
+    string title = 2;
+    string description = 3;
+    int32 duration = 4;
+    int32 age_limit = 5;
+}
+
+message CreateMovieResponse {
+    int64 id = 1;
+}
+
+message GetMovieRequest {
+    int64 id = 1;
+}
+
+message GetMovieResponse {
+    int64 id = 1;
+    string title = 2;
+    string description = 3;
+    int32 duration = 4;
+    int32 age_limit = 5;
+    string created_at = 6;
+}
+
+message ListMovieRequest {}
+
+message ListMovieResponse {
+    repeated GetMovieResponse movies = 1;
+}
+
+message UpdateMovieRequest {
+    int64 id = 1;
+    string title = 2;
+    string description = 3;
+    int32 duration = 4;
+    int32 age_limit = 5;
+}
+
+message UpdateMovieResponse {
+    int64 code = 1;
+    string message = 2;
+}
+
+message DeleteMovieRequest {
+    int64 id = 1;
+}
+
+message DeleteMovieResponse {
+    int64 code = 1;
+    string message = 2;
+}

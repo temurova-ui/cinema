@@ -3,11 +3,11 @@ package server
 import (
 	"context"
 	"errors"
-	"movieSer/internal/models"
-	"movieSer/internal/service"
-	"movieSer/movie"
-	errs "movieSer/pkg/errors"
-	"movieSer/pkg/logger"
+	"github.com/temurova-ui/cinema/movieservice/internal/models"
+	"github.com/temurova-ui/cinema/movieservice/internal/service"
+	"github.com/temurova-ui/cinema/movieservice/movie"
+	errs "github.com/temurova-ui/cinema/movieservice/pkg/errors"
+	"github.com/temurova-ui/cinema/movieservice/pkg/logger"
 )
 
 type Server struct {

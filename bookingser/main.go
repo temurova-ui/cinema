@@ -1,6 +1,13 @@
 package main
 
 import (
+	bookingv1 "github.com/temurova-ui/cinema/bookingser/bookingpb"
+	"github.com/temurova-ui/cinema/bookingser/internal/config"
+	"github.com/temurova-ui/cinema/bookingser/internal/repository"
+	"github.com/temurova-ui/cinema/bookingser/internal/server"
+	"github.com/temurova-ui/cinema/bookingser/internal/service"
+	"github.com/temurova-ui/cinema/bookingser/pkg/db"
+	"github.com/temurova-ui/cinema/bookingser/pkg/logger"
 	"context"
 	"log"
 	"net"
@@ -8,13 +15,6 @@ import (
 	"os/signal"
 	"syscall"
 	"time"
-	"github.com/temurova-ui/cinema/userservice/internal/config"
-	"github.com/temurova-ui/cinema/userservice/internal/repo"
-	"github.com/temurova-ui/cinema/userservice/internal/server"
-	"github.com/temurova-ui/cinema/userservice/internal/service"
-	"github.com/temurova-ui/cinema/userservice/pkg/db"
-	"github.com/temurova-ui/cinema/userservice/pkg/logger"
-	user "github.com/temurova-ui/cinema/userservice/userpb/v1"
 
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
@@ -24,14 +24,14 @@ import (
 func main() {
 
 	cfg, err := config.New("./config/config.env")
-	if err != nil {
+	if err != nil { 
 		log.Fatal("config.New", err)
 	}
 
 	conn, err := db.New(db.Option{
 		Host:     cfg.DBHost,
 		Port:     cfg.DBPort,
-		User:     cfg.DBUser,
+		Booking:  cfg.DBBooking,
 		Password: cfg.DBPassword,
 		DBName:   cfg.DBName,
 	})
@@ -55,13 +55,13 @@ func main() {
 
 	grpcServer := grpc.NewServer()
 
-	userRepo := repo.New(conn)
+	bookingRepo := repository.New(conn)
 
-	userService := service.New(userRepo)
+	bookingService := service.New(*bookingRepo, *lg)
 
-	userServer := server.New(*lg, userService)
+	bookingServer := server.New(*lg, bookingService)
 
-	user.RegisterUserServiceServer(grpcServer, userServer)
+	bookingv1.RegisterBookingServiceServer(grpcServer, bookingServer)
 
 	reflection.Register(grpcServer)
 

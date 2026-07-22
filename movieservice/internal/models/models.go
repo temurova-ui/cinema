@@ -1,7 +1,7 @@
 package models
 
 import (
-	"movieSer/pkg/errors"
+	"github.com/temurova-ui/cinema/movieservice/pkg/errors"
 	"time"
 )
 
@@ -13,6 +13,7 @@ type Movie struct {
 	AgeLimit    int32
 	CreatedAt   time.Time
 }
+
 
 func (m *Movie) Validate() error {
 	if len(m.Title) == 0 || len(m.Description) == 0 || m.AgeLimit < 1 || m.Duration < 1 {

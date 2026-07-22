@@ -3,9 +3,9 @@ package repository
 import (
 	"context"
 	"errors"
-	"movieSer/internal/models"
-	"movieSer/movie"
-	errs "movieSer/pkg/errors"
+	"github.com/temurova-ui/cinema/movieservice/internal/models"
+	"github.com/temurova-ui/cinema/movieservice/movie"
+	errs "github.com/temurova-ui/cinema/movieservice/pkg/errors"
 
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"

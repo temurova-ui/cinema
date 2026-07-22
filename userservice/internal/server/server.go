@@ -3,10 +3,10 @@ package server
 import(
 	"context"
 	"errors"
-	"github.com/temurova-ui/cinema/internal/model"
-	"github.com/temurova-ui/cinema/internal/service"
-	"github.com/temurova-ui/cinema/pkg/logger"
-	user "github.com/temurova-ui/cinema/userpb/v1"
+	"github.com/temurova-ui/cinema/userservice/internal/model"
+	"github.com/temurova-ui/cinema/userservice/internal/service"
+	"github.com/temurova-ui/cinema/userservice/pkg/logger"
+	user "github.com/temurova-ui/cinema/userservice/userpb/v1"
 )
 
 type Server struct{

@@ -3,13 +3,13 @@ package main
 import (
 	"context"
 	"log"
-	"movieSer/internal/config"
-	"movieSer/internal/repo"
-	"movieSer/internal/server"
-	"movieSer/internal/service"
-	"movieSer/movie"
-	"movieSer/pkg/db"
-	"movieSer/pkg/logger"
+	"github.com/temurova-ui/cinema/movieservice/internal/config"
+	"github.com/temurova-ui/cinema/movieservice/internal/repo"
+	"github.com/temurova-ui/cinema/movieservice/internal/server"
+	"github.com/temurova-ui/cinema/movieservice/internal/service"
+	"github.com/temurova-ui/cinema/movieservice/movie"
+	"github.com/temurova-ui/cinema/movieservice/pkg/db"
+	"github.com/temurova-ui/cinema/movieservice/pkg/logger"
 	"net"
 	"os"
 	"os/signal"
@@ -65,7 +65,7 @@ func main() {
 	reflection.Register(grpcServer)
 
 	go func() {
-		lg.Info("server listening at %v", zap.String("addr", lis.Addr().String()))
+		lg.Info("server listening", zap.String("addr", lis.Addr().String()))
 		if err = grpcServer.Serve(lis); err != nil {
 			log.Fatal("failed to serve: %w", err)
 		}

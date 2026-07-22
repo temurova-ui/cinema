@@ -3,10 +3,10 @@ package service
 import (
 	"context"
 	"fmt"
-	"movieSer/internal/models"
-	"movieSer/internal/repo"
-	"movieSer/movie"
-	"movieSer/pkg/errors"
+	"github.com/temurova-ui/cinema/movieservice/internal/models"
+	"github.com/temurova-ui/cinema/movieservice/internal/repo"
+	"github.com/temurova-ui/cinema/movieservice/movie"
+	"github.com/temurova-ui/cinema/movieservice/pkg/errors"
 )
 
 type Service struct {

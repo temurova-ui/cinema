@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package booking.v1;
+
+option go_package = "github.com/your-org/cinema-booking-proto/booking/v1;bookingv1";
+
+service BookingService {
+    rpc CreateBooking(CreateBookingRequest) returns (CreateBookingResponse);
+    rpc GetBooking(GetBookingRequest) returns (GetBookingResponse);
+    rpc GetUserBookings(GetUserBookingsRequest) returns (GetUserBookingsResponse);
+    rpc CancelBooking(CancelBookingRequest) returns (CancelBookingResponse);
+}
+
+enum BookingStatus {
+  BOOKING_STATUS_UNSPECIFIED = 0;
+  BOOKING_STATUS_PENDING = 1;
+  BOOKING_STATUS_CONFIRMED = 2;
+  BOOKING_STATUS_CANCELED = 3;
+}
+
+message Booking {
+  int32 id = 1;
+  int32 user_id = 2;
+  int32 movie_id = 3;
+  BookingStatus status = 4;
+}
+
+message CreateBookingRequest {
+  int32 user_id = 1;
+  int32 movie_id = 2;
+}
+
+message CreateBookingResponse {
+  Booking booking = 1;
+}
+
+message GetBookingRequest {
+  int32 id = 1;
+}
+
+message GetBookingResponse {
+  Booking booking = 1;
+}
+
+message GetUserBookingsRequest {
+  int32 user_id = 1;
+}
+
+message GetUserBookingsResponse {
+  repeated Booking bookings = 1;
+}
+
+message CancelBookingRequest {
+  int32 id = 1;
+}
+
+message CancelBookingResponse {}
