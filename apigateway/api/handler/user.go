@@ -9,6 +9,19 @@ import (
 	userpb "github.com/temurova-ui/cinema/userservice/userpb/v1"
 )
 
+// GetUser
+//
+// @Summary Get User
+// @Description Get user by id
+// @Tags User
+// @Security BearerAuth
+// @Produce json
+// @Param user_id path string true "User ID"
+// @Success 200 {object} UserRespose
+// @Failure 400 {object} RespErr
+// @Failure 500 {object} RespErr
+// @Router /api/user/get/{user_id} [get]
+
 func (h *handler) GetUser(c *gin.Context) {
 	idStr := c.Param("user_id")
 	if idStr == "" {
@@ -25,11 +38,11 @@ func (h *handler) GetUser(c *gin.Context) {
 	response, err := h.serviceManager.UserService().GetByID(c.Request.Context(), &userpb.GetUserRequest{
 		Id: id,
 	})
-
 	if err != nil {
 		log.Println("handler GetUser h.serviceManager.UserService().GetByID", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "internal server error"})
 		return
 	}
+
 	c.JSON(http.StatusOK, response)
 }
